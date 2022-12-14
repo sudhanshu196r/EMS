@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block style %}
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  th {
+    background-color:#ff6464;
+  }
+  
+  td, th {
+    border: 1px ;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+  
+{% endblock style %}
+
+
+{% block body %}
+    {% comment%}  {{allEmp}}{%endcomment%}
+    <table>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>DOB</th>
+          <th>DOJ</th>
+          <th>Department</th>
+          <th>Post</th>
+          <th>Address</th>
+          <th>City</th>
+          <th>Country</th>
+          <th>Zip Code</th>
+          <th>State</th>
+          <th>Active</th>
+          <th>Leave Count</th>
+          <th>On Leave</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+        {% for employee in allEmp %}
+            <tr>
+                <td>{{employee.Id}}</td>
+                <td>{{employee.Name}}</td>
+                <td>{{employee.DOB}}</td>
+                <td>{{employee.DOJ}}</td>
+                <td>{{employee.Department}}</td>
+                <td>{{employee.Post}}</td>
+                <td>{{employee.Address}}</td>
+                <td>{{employee.City}}</td>
+                <td>{{employee.Country}}</td>
+                <td>{{employee.ZipCode}}</td>
+                <td>{{employee.State}}</td>
+                <td>{{employee.Active}}</td>
+                <td>{{employee.Leave_count}}</td>
+                <td>{{employee.on_leave}}</td>
+                <td><a href="editEmployee/{{employee.Id}}">Edit</a></td>
+                <td><a href="deleteEmployee/{{employee.Id}}">Delete</a></td>
+
+            </tr>
+        {% endfor %}
+      
+      
+{% endblock body %}

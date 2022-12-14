@@ -1,0 +1,177 @@
+{% extends 'base.html'%}
+{% block style %}
+
+.fieldWrapper {
+    margin:20px;
+}
+
+.form-group {
+    border:8px outset;
+    margin:100px;
+    padding:50px;
+    
+}
+
+h1 {
+    text-align:center;
+}
+
+tr,td{
+    margin:10px;
+    padding:10px;
+}
+
+#second_column{
+    padding-left:100px;
+}
+
+#first_column{
+    padding-left:15px;
+}
+input,select{
+    width:300px;
+    height:40px;
+    background-color:#efe4e4;
+    border:0px inset grey;
+    border-radius:20px;
+    padding:5px;
+    box-shadow:5px 10px;
+}
+
+[type=submit] {
+    background-color:#ff6464;
+    width:200px;
+}
+
+{% endblock style %}
+
+{% block body %} 
+<h1>Add Employee</h1>
+<div class="form-group">
+<form method="post">
+    {% csrf_token %} 
+{{ form.non_field_errors }}
+
+
+<table>
+
+<tr>
+    <td id="first_column">
+<div class="fieldWrapper">
+    {{ form.Name.errors }}
+    <label for="{{ form.Name.id_for_label }}">Name : </label></div>
+   <p> {{ form.Name }}</p>
+
+</td>
+<td id="second_column">
+
+<div class="fieldWrapper">
+    {{ form.DOB.errors }}
+    <label for="{{ form.DOB.id_for_label }}">DOB : </label></div>
+    <p>{{ form.DOB }}</p>
+
+</td>
+</tr>
+
+<tr>
+    <td id="first_column">
+<div class="fieldWrapper">
+    {{ form.DOJ.errors }}
+    <label for="{{ form.DOJ.id_for_label }}">DOJ : </label></div>
+    <p>{{ form.DOJ }}</p>
+</td>
+
+<td id="second_column">
+<div class="fieldWrapper">
+    {{ form.Department.errors }}
+    <label for="{{ for.Department.id_for_label }}">Department : </label></div>
+    <p>{{ form.Department }}</p>
+</td>
+
+</tr>
+
+<tr>
+    <td id="first_column">
+<div class="fieldWrapper">
+    {{ form.Post.errors }}
+    <label for="{{ for.Post.id_for_label }}">Post : </label></div>
+<p>{{ form.Post }}</p>
+</td>
+
+<td id="second_column">
+
+<div class="fieldWrapper">
+    {{ form.Address.errors }}
+    <label for="{{ for.Address.id_for_label }}">Address : </label></div>
+    <p>{{ form.Address }}</p>
+</td>
+
+</tr>
+
+<tr>
+    <td id="first_column">
+<div class="fieldWrapper">
+    {{ form.City.errors }}
+    <label for="{{ for.City.id_for_label }}">City : </label></div>
+    <p>{{ form.City }}</p>
+</td>
+
+<td id="second_column">
+<div class="fieldWrapper">
+    {{ form.Country.errors }}
+    <label for="{{ for.Country.id_for_label }}">Country : </label></div>
+    <p>{{ form.Country }}</p>
+</td>
+
+</tr>
+
+<tr>
+    <td id="first_column">
+
+<div class="fieldWrapper">
+    {{ form.ZipCode.errors }}
+    <label for="{{ for.ZipCode.id_for_label }}">Zip Code : </label></div>
+    <p>{{ form.ZipCode }}</p>
+</td>
+
+<td id="second_column">
+<div class="fieldWrapper">
+    {{ form.State.errors }}
+    <label for="{{ for.State.id_for_label }}">State : </label></div>
+    <p>{{ form.State }}</p>
+</td>
+</tr>
+
+<tr>
+    <td id="first_column">
+<div class="fieldWrapper">
+    {{ form.Active.errors }}
+    <label for="{{ for.Active.id_for_label }}">Active : </label></div>
+    <p>{{ form.Active }}</p>
+</td>
+
+<td id="second_column">
+<div class="fieldWrapper">
+    {{ form.Leave_count.errors }}
+    <label for="{{ for.Leave_count.id_for_label }}">Leave Count : </label></div>
+    <p>{{ form.Leave_count }}<p>
+    </td>
+</tr>
+
+<tr>
+    <td id = "first_column">
+<div class="fieldWrapper">
+    {{ form.on_leave.errors }}
+    <label for="{{ for.on_leave.id_for_label }}">On Leave : </label></div>
+    <p>{{ form.on_leave }}</p>
+</td>
+<td id = "second_column">
+        <div class = "fieldWrapper">
+        <input type="submit" value="Submit"/>
+    </div>
+</td>
+</tr>
+</table>
+    </form>
+</div>
+{% endblock body%}

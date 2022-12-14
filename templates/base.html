@@ -1,0 +1,107 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <!-- Latest compiled and minified CSS -->
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <style>
+      
+      body {
+        font-family: "Lato", sans-serif;
+        background-image: url({% static '\img\carousal2.jpeg'%});
+      }
+      
+      .navbar{
+        background: #eee;
+      }
+
+      .sidenav {
+        width: 180px;
+        height:100%;
+        position: absolute;
+        z-index: 1;
+        top: 63px;
+        left: 5px;
+        background: #eee;
+        overflow-x: hidden;
+        padding: 8px 0;
+      }
+      
+      .sidenav a {
+        padding: 15px 10px 8px 16px;
+        text-decoration: none;
+        font-size: 17px;
+        color: #000;
+        display: block;
+      }
+      
+      .sidenav a:hover {
+        color: #064579;
+      }
+      
+      .main {
+        margin-left: 190px; /* Same width as the sidebar + left position in px */
+        font-size: 15px; /* Increased text to enable scrolling */
+        padding: 0px 10px;
+    
+      }
+      
+      @media screen and (max-height: 600px) {
+        .sidenav {padding-top: 15px;}
+        .sidenav a {font-size: 18px;}
+      }
+
+      #footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 2.5rem;    
+        background-color:#ff6464;
+      }
+      
+      {% block style %}
+
+      {% endblock style %}
+      </style>
+    
+    
+    <title>My test page</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'EMS:home' %}"><img src="{% static '\img\logo.png'%}"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'EMS:home' %}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"></a>
+            </li>
+            
+            
+          <!--<form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>-->
+          </form>
+        </div>
+      </div>
+    </nav>
+    <div class="sidenav">
+      <a href="{% url 'EMS:addEmployee' %}">Add Employee</a>
+      <a href="{% url 'EMS:Employees' %}">Employees</a>
+      {% comment "" %}<a href="#clients">Clients</a>{% endcomment %}
+    </div>
+    
+    <div class="main">{% block body %} {% endblock body%}</div>
+  </body>
+</html>

@@ -1,48 +1,8 @@
 {% extends 'base.html'%}
+{% load static %}
 {% block style %}
 
-.fieldWrapper {
-    margin:20pxpx;
-}
-
-.form-group {
-    border:8px outset;
-    margin:100px;
-    padding:50px;
-    
-}
-
-h1 {
-    text-align:center;
-}
-
-tr,td{
-    margin:10px;
-    padding:10px;
-}
-
-#second_column{
-    padding-left:100px;
-}
-
-#first_column{
-    padding-left:15px;
-}
-input,select{
-    width:300px;
-    height:40px;
-    background-color:#efe4e4;
-    border:0px inset grey;
-    border-radius:20px;
-    padding:5px;
-    box-shadow:5px 10px;
-}
-
-[type=submit] {
-    background-color:#ff6464;
-    width:200px;
-}
-
+<link rel="stylesheet" href="{% static '\style\addemp.css' %}">
 {% endblock style %}
 
 {% block body %} 

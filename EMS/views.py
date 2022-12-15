@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .models import Employee
 from .forms import AddEmployeeForm
+from .filters import EmpFilter
 # Create your views here.
 
 def home(request):
@@ -27,10 +28,16 @@ def addEmployee(request):
     }
     return render(request, 'addEmployee.html',context)
 
+
+
+
 def Employees(request):
     emp = Employee.objects.all()
+
+    myFilter = EmpFilter(request.GET,queryset=emp)
+    emp=myFilter.qs
     details = {
-        'allEmp' : emp.values()
+        'allEmp' : emp.values(),'myFilter':myFilter
     }
 
     return render(request, 'Employees.html',details)

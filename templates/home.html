@@ -1,28 +1,17 @@
 {% extends 'base.html' %}
+{% load static %}
 
-{% block style %}
+{% block style %} 
+<link rel="stylesheet" href="{% static '\style\homestyle.css' %}">
+      {% endblock style %}
 
-h1{
-    text-align:center;
-}
 
-h3{
-    display:grid;
-    width:500px;
-    text-align: center;
-    margin-top:30px;
-    margin-left:250px;
-    background-color:#efe4e4;
-    border:3px solid #efe4e4;
-    box-shadow:3px 8px;
-}
 
-{% endblock style %}
 
 {% block body%}
     <h1>Welcome to EMS SopeoNow</h1><hr>
     <h3>Total Employees : {{count_all}}</h3>
-    <h3>Employee on leave : {{emp_on_leave}}</h3>
-    <h3>Active Employee : {{active_emp}}</h3>
+    <h3>Employees on leave : {{emp_on_leave}}</h3>
+    <h3>Active Employees : {{active_emp}}</h3>
 
 {% endblock body%}

@@ -6,12 +6,7 @@
 
 {% endblock style %}
 
-{%block search%}
-<form method="get">
-  {{myFilter.form}}
-  <button class="btn btn-outline-success" type="submit">Search</button>
-</form>
-{%endblock search%}
+
 
 {% block body %}
     {% comment%}  {{allEmp}}{%endcomment%}
@@ -34,7 +29,7 @@
           <th>Edit</th>
           <th>Delete</th>
         </tr>
-        {% for employee in allEmp %}
+        {% for employee in search_details %}
             <tr>
                 <td>{{employee.Id}}</td>
                 <td>{{employee.Name}}</td>

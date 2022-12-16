@@ -18,10 +18,11 @@ def home(request):
     return render(request, 'home.html',context)
 
 def addEmployee(request):
-    form = AddEmployeeForm(request.POST or None)
+    form = AddEmployeeForm(request.GET)
     if form.is_valid():
         form.save()
         form = AddEmployeeForm()
+        return redirect('/Employees')
 
     context = {
         'form':form
@@ -53,8 +54,9 @@ def editEmployee(request,id):
     form = AddEmployeeForm(request.POST or None,instance=emp_data)
     if form.is_valid():
         form.save()
-
+        return redirect('/Employees')
     context = {
-        'form' : form
-    }
+      'form' : form
+   }
     return render(request, 'editEmployee.html',context)
+    

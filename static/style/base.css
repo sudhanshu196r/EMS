@@ -4,6 +4,7 @@ body {
 
 .navbar {
     background: #eee;
+    height: 60px;
 }
 
 .sidenav {

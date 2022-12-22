@@ -18,17 +18,19 @@ def home(request):
     return render(request, 'home.html',context)
 
 def addEmployee(request):
-    form = AddEmployeeForm(request.GET)
-    if form.is_valid():
-        form.save()
-        form = AddEmployeeForm()
-        return redirect('/Employees')
+    if request.method=='POST':
+        form = AddEmployeeForm(request.POST)
+        if form.is_valid():
+            form.save()
 
-    context = {
-        'form':form
-    }
-    return render(request, 'addEmployee.html',context)
+        return redirect('EMS:Employees')
 
+    elif request.method=='GET':
+        form= AddEmployeeForm()
+        context = {
+            'form':form
+        }
+        return render(request,'addEmployee.html',context)
 
 
 
@@ -49,14 +51,22 @@ def deleteEmployee(request,id):
     return redirect('/Employees')
 
 def editEmployee(request,id):
-    
-    emp_data= Employee.objects.get(Id=id)
-    form = AddEmployeeForm(request.POST or None,instance=emp_data)
-    if form.is_valid():
-        form.save()
-        return redirect('/Employees')
-    context = {
-      'form' : form
-   }
-    return render(request, 'editEmployee.html',context)
+    if request.method == 'POST':   
+        emp_data= Employee.objects.get(Id=id)
+        form = AddEmployeeForm(request.POST or None,instance=emp_data)
+        if form.is_valid():
+            on_leave = request.POST.get('on_leave')
+            form.save(commit=False)
+            if on_leave == True :
+                form.Leave_count += 1
+                form.save()
+            return redirect('/Employees')
+
+    elif request.method == 'GET':
+        emp_data= Employee.objects.get(Id=id)
+        form = AddEmployeeForm(instance=emp_data)
+        context = {
+            'form' : form
+        }
+        return render(request, 'editEmployee.html',context)
     
